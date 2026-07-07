@@ -24,10 +24,10 @@
             border-radius: 22px;
             padding: 30px 20px;
             margin-bottom: 20px;
-            color: #000;
+            color: #222;
         }
         .card1 {
-            background: linear-gradient(135deg, #ffdd00, #00c83c);
+            background: linear-gradient(135deg, #ffdd00, #007b3c);
         }
         .card2 {
             background: #ffffff;
@@ -42,16 +42,19 @@
             align-items: center;
             gap:12px;
             margin-bottom:12px;
-            cursor:pointer;
         }
         .tip-text{
             color:#666;
             font-size:14px;
         }
         .enter-btn {
-            color: #6600cc;
+            color: #0066cc;
             font-size:18px;
             font-weight:bold;
+            text-decoration:none;
+        }
+        a{
+            color:#0066cc;
             text-decoration:none;
         }
     </style>
@@ -62,31 +65,24 @@
     <!-- 游戏好物馆 -->
     <div class="card card1">
         <h2>游戏好物馆</h2>
-        <a href="" class="enter-btn">点击进入</a>
+        <a href="好物馆网页链接" class="enter-btn">点击进入</a>
     </div>
 
-    <!-- 粉止水工具库 -->
+    <!-- 粉止水工具库 压缩包单链接 -->
     <div class="card card2">
-        <h2 onclick="downloadTwoFiles()">粉止水工具库</h2>
+        <a href="https://wwbas.lanzouv.com/iiI7Z3uxanni">
+            <h2>粉止水工具库</h2>
+        </a>
         <div class="tip-text">所有文件提取密码：FZSNB</div>
     </div>
 
-    <!-- 粉止水社区 -->
+    <!-- 粉止水社区 新增提示文字 -->
     <div class="card card3">
         <a href="https://t.me/+2_LxP6GrnngzZGY8">
             <h2>粉止水社区</h2>
         </a>
+        <div class="tip-text">网址进不去的去飞机里面</div>
     </div>
 
-<script>
-function downloadTwoFiles(){
-    let apk1 = document.createElement("a");
-    apk1.href = "https://wwbas.lanzouv.com/iSY7Z3ux67ej";
-    apk1.click();
-    let apk2 = document.createElement("a");
-    apk2.href = "https://wwbas.lanzouv.com/indSO3ux66pe";
-    apk2.click();
-}
-</script>
 </body>
 </html>
