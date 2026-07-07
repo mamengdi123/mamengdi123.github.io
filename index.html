@@ -9,80 +9,94 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui;
+            font-family: system-ui, sans-serif;
         }
         body {
-            background: #f5f5f7;
-            padding: 20px 15px;
+            background: #ffffff;
+            padding: 40px 20px;
         }
         h1 {
             text-align: center;
-            margin-bottom: 30px;
-            color: #222;
+            font-size: 48px;
+            color: #000;
+            margin-bottom: 40px;
+            font-weight: bold;
         }
-        .card {
-            border-radius: 22px;
-            padding: 30px 20px;
+        /* 顶部渐变可点击按钮 */
+        .box-link {
+            display: block;
+            background: linear-gradient(90deg, #ffdd00, #28a745);
+            border-radius: 24px;
+            padding: 45px 30px;
+            margin-bottom: 24px;
+            text-decoration: none;
+        }
+        .box-link h2 {
+            font-size: 42px;
+            color: #000;
+            margin-bottom: 8px;
+        }
+        .box-link p {
+            font-size: 30px;
+            color: #0055ff;
+        }
+        /* 普通白色卡片（可点击） */
+        .box-normal {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 35px 25px;
             margin-bottom: 20px;
-            color: #222;
+            text-decoration: none;
+            display: block;
         }
-        .card1 {
-            background: linear-gradient(135deg, #ffdd00, #007b3c);
+        .box-normal h2 {
+            font-size: 36px;
+            color: #0066ff;
+            margin-bottom: 10px;
         }
-        .card2 {
-            background: #ffffff;
-            box-shadow: 0 2px 12px #00000012;
+        .box-normal p {
+            font-size: 22px;
+            color: #666;
         }
-        .card3 {
-            background: #ffffff;
-            box-shadow: 0 2px 12px #00000012;
+        /* 禁止点击静态卡片（第三个） */
+        .box-static {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            padding: 35px 25px;
+            pointer-events: none; /* 禁止点击 */
         }
-        .card h2 {
-            display: flex;
-            align-items: center;
-            gap:12px;
-            margin-bottom:12px;
+        .box-static h2 {
+            font-size: 36px;
+            color: #0066ff;
+            margin-bottom: 10px;
         }
-        .tip-text{
-            color:#666;
-            font-size:14px;
-        }
-        .enter-btn {
-            color: #0066cc;
-            font-size:18px;
-            font-weight:bold;
-            text-decoration:none;
-        }
-        a{
-            color:#0066cc;
-            text-decoration:none;
+        .box-static p {
+            font-size: 22px;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <h1>粉止水导航</h1>
 
-    <!-- 游戏好物馆 -->
-    <div class="card card1">
-        <h2>游戏好物馆</h2>
-        <a href="好物馆网页链接" class="enter-btn">点击进入</a>
-    </div>
+    <!-- 第一个渐变按钮：改为卡网，可点击跳转 -->
+    <a class="box-link" href="http://caiyunqk.cn/shop/8F8BQ6LT" target="_blank">
+        <h2>卡网</h2>
+        <p>点击进入</p>
+    </a>
 
-    <!-- 粉止水工具库 压缩包单链接 -->
-    <div class="card card2">
-        <a href="https://wwbas.lanzouv.com/iiI7Z3uxanni">
-            <h2>粉止水工具库</h2>
-        </a>
-        <div class="tip-text">所有文件提取密码：FZSNB</div>
-    </div>
+    <!-- 第二个：粉止水工具库 -->
+    <a class="box-normal" href="https://wwbas.lanzouv.com/iiI7Z3uxanni">
+        <h2>粉止水工具库</h2>
+        <p>所有文件提取密码：FZSNB</p>
+    </a>
 
-    <!-- 粉止水社区 新增提示文字 -->
-    <div class="card card3">
-        <a href="https://t.me/+2_LxP6GrnngzZGY8">
-            <h2>粉止水社区</h2>
-        </a>
-        <div class="tip-text">网址进不去的去飞机里面</div>
+    <!-- 第三个：无法点击，下方文字@hautjm -->
+    <div class="box-static">
+        <h2>粉止水社区</h2>
+        <p>@hautjm</p>
     </div>
-
 </body>
 </html>
