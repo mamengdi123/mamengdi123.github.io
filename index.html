@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粉止水导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui;
+        }
+        body {
+            background: #f5f5f7;
+            padding: 20px 15px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #222;
+        }
+        .card {
+            border-radius: 22px;
+            padding: 30px 20px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .card1 {
+            background: linear-gradient(135deg, #ffdd00, #00c83c);
+        }
+        .card2 {
+            background: #ffffff;
+            box-shadow: 0 2px 12px #00000012;
+        }
+        .card3 {
+            background: #ffffff;
+            box-shadow: 0 2px 12px #00000012;
+        }
+        .card h2 {
+            display: flex;
+            align-items: center;
+            gap:12px;
+            margin-bottom:12px;
+            cursor:pointer;
+        }
+        .tip-text{
+            color:#666;
+            font-size:14px;
+        }
+        .enter-btn {
+            color: #6600cc;
+            font-size:18px;
+            font-weight:bold;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <h1>粉止水导航</h1>
+
+    <!-- 游戏好物馆 -->
+    <div class="card card1">
+        <h2>游戏好物馆</h2>
+        <a href="" class="enter-btn">点击进入</a>
+    </div>
+
+    <!-- 粉止水工具库 -->
+    <div class="card card2">
+        <h2 onclick="downloadTwoFiles()">粉止水工具库</h2>
+        <div class="tip-text">所有文件提取密码：FZSNB</div>
+    </div>
+
+    <!-- 粉止水社区 -->
+    <div class="card card3">
+        <a href="https://t.me/+2_LxP6GrnngzZGY8">
+            <h2>粉止水社区</h2>
+        </a>
+    </div>
+
+<script>
+function downloadTwoFiles(){
+    let apk1 = document.createElement("a");
+    apk1.href = "https://wwbas.lanzouv.com/iSY7Z3ux67ej";
+    apk1.click();
+    let apk2 = document.createElement("a");
+    apk2.href = "https://wwbas.lanzouv.com/indSO3ux66pe";
+    apk2.click();
+}
+</script>
+</body>
+</html>
