@@ -2,101 +2,126 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>粉止水导航</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>粉止水导航官网</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, sans-serif;
+            font-family: "Microsoft YaHei", sans-serif;
         }
         body {
-            background: #ffffff;
-            padding: 40px 20px;
+            background-color: #ffd6e7;
+            padding: 40px 16px;
         }
-        h1 {
+        .wrap {
+            background: #ffe6f0;
+            border-radius: 26px;
+            padding: 40px 24px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .top-title {
+            background: #ffcce0;
+            border-radius: 999px;
             text-align: center;
-            font-size: 48px;
-            color: #000;
-            margin-bottom: 40px;
+            padding: 14px 10px;
+            font-size: 22px;
+            color: #c7487e;
             font-weight: bold;
+            margin-bottom: 32px;
+            position: relative;
         }
-        /* 顶部渐变可点击按钮 */
-        .box-link {
-            display: block;
-            background: linear-gradient(90deg, #ffdd00, #28a745);
-            border-radius: 24px;
-            padding: 45px 30px;
-            margin-bottom: 24px;
-            text-decoration: none;
+        .star-heart {
+            position: absolute;
+            right: -12px;
+            top: -12px;
+            font-size: 38px;
         }
-        .box-link h2 {
-            font-size: 42px;
-            color: #000;
-            margin-bottom: 8px;
+        .avatar-box {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 36px;
+            background: #ffd6e7;
+            border-radius: 50%;
+            padding: 6px;
         }
-        .box-link p {
-            font-size: 30px;
-            color: #0055ff;
-        }
-        /* 普通白色卡片（可点击） */
-        .box-normal {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 20px;
-            padding: 35px 25px;
-            margin-bottom: 20px;
-            text-decoration: none;
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
             display: block;
         }
-        .box-normal h2 {
-            font-size: 36px;
-            color: #0066ff;
-            margin-bottom: 10px;
+        .btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-        .box-normal p {
-            font-size: 22px;
-            color: #666;
+        .btn-item {
+            width: 100%;
+            background: linear-gradient(90deg, #fff5f9, #ffcce0);
+            border-radius: 999px;
+            text-align: center;
+            padding: 18px 10px;
+            font-size: 20px;
+            color: #c7487e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
         }
-        /* 禁止点击静态卡片（第三个） */
-        .box-static {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 20px;
-            padding: 35px 25px;
-            pointer-events: none; /* 禁止点击 */
+        /* 不可点击按钮样式 */
+        .btn-disabled {
+            cursor: default;
+            pointer-events: none;
         }
-        .box-static h2 {
-            font-size: 36px;
-            color: #0066ff;
-            margin-bottom: 10px;
+        .footer-area {
+            margin-top: 40px;
+            text-align: center;
+            color: #c7487e;
+            font-size: 20px;
         }
-        .box-static p {
-            font-size: 22px;
-            color: #666;
+        .footer-heart {
+            margin: 20px 0 10px;
+            font-size: 32px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>粉止水导航</h1>
+    <div class="wrap">
+        <div class="top-title">
+            粉止水导航官网
+            <span class="star-heart">💖</span>
+        </div>
 
-    <!-- 第一个渐变按钮：改为卡网，可点击跳转 -->
-    <a class="box-link" href="http://caiyunqk.cn/shop/8F8BQ6LT" target="_blank">
-        <h2>卡网</h2>
-        <p>点击进入</p>
-    </a>
+        <!-- 已替换成你上传的男生头像图 -->
+        <div class="avatar-box">
+            <img src="https://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/604f3f448c3a4138a31041144d41970c~tplv-a9rns2rl98-image.image" alt="头像">
+        </div>
 
-    <!-- 第二个：粉止水工具库 -->
-    <a class="box-normal" href="https://wwbas.lanzouv.com/iiI7Z3uxanni">
-        <h2>粉止水工具库</h2>
-        <p>所有文件提取密码：FZSNB</p>
-    </a>
+        <div class="btn-list">
+            <!-- 粉止水卡网 -->
+            <a href="https://caiyunqk.cn/shop/8F8BQ6LT" class="btn-item">
+                <span>🚀</span>粉止水卡网
+            </a>
+            <!-- 上号、查询器 -->
+            <a href="https://wwbas.lanzouv.com/iil7Z3uxanni" class="btn-item">
+                <span>⬇️</span>上号、查询器（密码fzsnb）
+            </a>
+            <!-- 不可点击按钮 -->
+            <div class="btn-item btn-disabled">
+                <span>🛡️</span>粉止水主频道@jipin66678
+            </div>
+        </div>
 
-    <!-- 第三个：无法点击，下方文字@hautjm -->
-    <div class="box-static">
-        <h2>粉止水社区</h2>
-        <p>@hautjm</p>
+        <div class="footer-heart">❤️</div>
+        <div class="footer-area">
+            © 2026
+        </div>
     </div>
 </body>
 </html>
