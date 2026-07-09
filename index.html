@@ -1,128 +1,195 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>粉止水导航官网</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: system-ui, sans-serif;
-        }
-        body {
-            background-color: #ffd6e7;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        .container {
-            background: #ffe6f2;
-            border-radius: 24px;
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .title-box {
-            background: #ffb3d1;
-            border-radius: 999px;
-            padding: 14px;
-            text-align: center;
-            font-size: 26px;
-            color: #c83b80;
-            font-weight: bold;
-            position: relative;
-        }
-        .heart-star {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 30px;
-        }
-        .avatar-circle {
-            width: 260px;
-            height: 260px;
-            background: #ffcce0;
-            border-radius: 50%;
-            margin: 40px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            color: #a82e6c;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-        }
-        .btn-item {
-            display: block;
-            width: 100%;
-            background: #ffd9ec;
-            border-radius: 999px;
-            text-align: center;
-            padding: 18px;
-            margin: 16px 0;
-            font-size: 22px;
-            color: #b83078;
-            text-decoration: none;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .btn-item:hover {
-            background: #ffb8d6;
-        }
-        .footer-heart {
-            text-align: center;
-            font-size: 50px;
-            color: #c00040;
-            margin: 40px 0 20px;
-        }
-        .password-tip {
-            text-align: center;
-            font-size: 20px;
-            color: #b02870;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-        .copyright {
-            text-align: center;
-            font-size: 20px;
-            color: #b02870;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>粉止水导航官网</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, "Microsoft YaHei", sans-serif;
+    }
+
+    body {
+        background: #ffffff;
+        min-height: 100vh;
+        padding: 12px 14px;
+    }
+
+    .wrap {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    /* 顶部标题栏 */
+    .top-title {
+        background: #f8f9fa;
+        border-radius: 10px;
+        border-top: 4px solid #2385d8;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .title-icon {
+        width: 32px;
+        height: 32px;
+        background: #2385d8;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 16px;
+    }
+
+    .title-text {
+        font-size: 22px;
+        color: #222;
+        font-weight: 500;
+    }
+
+    /* 圆形头像 */
+    .avatar-box {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        box-shadow: 0 3px 12px rgba(0,0,0,.15);
+        object-fit: cover;
+        border: 3px solid #fff;
+    }
+
+    /* 时间模块 */
+    .time-card {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 18px 12px;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .time-head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-size: 15px;
+        color: #2385d8;
+        margin-bottom: 8px;
+    }
+
+    .time-num {
+        font-size: 42px;
+        font-weight: 800;
+        color: #222;
+        line-height: 1;
+    }
+
+    .time-date {
+        font-size: 15px;
+        color: #777;
+        margin-top: 6px;
+    }
+
+    /* 可点击按钮通用样式 */
+    .nav-btn {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #3392e8, #1c6fb9);
+        border-radius: 10px;
+        text-align: center;
+        padding: 14px 10px;
+        margin: 14px 0;
+        color: #fff;
+        font-size: 15px;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0,102,187,.18);
+        transition: .15s;
+        line-height: 1.4;
+    }
+
+    .nav-btn:active {
+        transform: scale(.97);
+    }
+
+    /* 不可点击按钮样式 */
+    .no-click-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #3392e8, #1c6fb9);
+        border-radius: 10px;
+        text-align: center;
+        padding: 14px 10px;
+        margin: 14px 0;
+        color: #fff;
+        font-size: 15px;
+        box-shadow: 0 2px 8px rgba(0,102,187,.18);
+        line-height: 1.4;
+        pointer-events: none;
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- 顶部标题 -->
-        <div class="title-box">
-            粉止水导航官网
-            <span class="heart-star">💖</span>
-        </div>
+<div class="wrap">
 
-        <!-- 圆形头像区域 -->
-        <div class="avatar-circle">、像</div>
-
-        <!-- 原有按钮1 -->
-        <a href="https://caiyunqk.cn/shop/8F8BQ6LT" class="btn-item">🚀 粉止水卡网</a>
-
-        <!-- 新增4个按钮 可自行修改href跳转网址 -->
-        <a href="https://wwbas.lanzouv.com/iuoD03v8llaf" class="btn-item">🔹 粉止水上号器</a>
-        <a href="https://wwbas.lanzouv.com/iUDmO3v8ln6d" class="btn-item">🔹 粉止水查询器</a>
-        <a href="https://wwbas.lanzouv.com/iAKB73vdx1ah" class="btn-item">🔹 粉止水普通禁号器</a>
-        <a href="https://wwbas.lanzouv.com/icHTU3vdx47c" class="btn-item">🔹 粉止水和平过滤器</a>
-
-        <!-- 主频道按钮，可点击 -->
-        <a href="填入主频道完整网址" class="btn-item">🛡️ 粉止水主频道@jipin66678</a>
-
-        <!-- 底部红心 -->
-        <div class="footer-heart">❤️</div>
-
-        <!-- 新增密码提示文字 -->
-        <div class="password-tip">所有文件密码都是fzsnb</div>
-
-        <!-- 版权 -->
-        <div class="copyright">© 2026</div>
+    <!-- 顶部标题栏 -->
+    <div class="top-title">
+        <div class="title-icon">Ⓟ</div>
+        <div class="title-text">粉止水导航官网</div>
     </div>
+
+    <!-- 圆形头像 -->
+    <div class="avatar-box">
+        <img class="avatar" src="/storage/emulated/0/avatar.jpg" alt="头像">
+
+    </div>
+
+    <!-- 北京时间 -->
+    <div class="time-card">
+        <div class="time-head">
+            <span>🕒</span>
+            <span>北京时间</span>
+        </div>
+        <div class="time-num" id="timeText">00:00:00</div>
+        <div class="time-date" id="dateText">2026年07月09日 星期四</div>
+    </div>
+
+    <!-- 按钮 -->
+    <a href="https://caiyunqk.cn/shop/8F8BQ6LT" class="nav-btn">🛒 粉止水购买主卡网</a>
+    <a href="https://wwbas.lanzouv.com/iuoD03v8llaf" class="nav-btn">⬇️ 上号器下载地址（密码fzsnb）</a>
+    <a href="https://wwbas.lanzouv.com/iUDmO3v8ln6d" class="nav-btn">🔍 下载查询、禁玩器（密码fzsnb）</a>
+    <a href="https://wwbas.lanzouv.com/icHTU3vdx47c" class="nav-btn">🚫 下载和平过滤器密码（fzsnb）</a>
+    <!-- 不可点击按钮 -->
+    <div class="no-click-btn">“¶” 粉止水主频道@jipin66678</div>
+
+</div>
+
+<script>
+function updateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const weekArr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    const week = weekArr[now.getDay()];
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+
+    document.getElementById('timeText').innerText = `${h}:${m}:${s}`;
+    document.getElementById('dateText').innerText = `${year}年${month}月${day}日 ${week}`;
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+</script>
 </body>
 </html>
