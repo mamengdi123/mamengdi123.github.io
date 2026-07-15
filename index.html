@@ -1,112 +1,1508 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>粉止水导航官网</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system}
-body{
-    background:#eeeeee;
-    text-align:center;
-    padding:30px 16px;
-}
-/* 头像区域 */
-.avatar-box{
-    margin-bottom:36px;
-}
-.avatar{
-    width:72px;
-    height:72px;
-    border-radius:50%;
-    background:#ddd;
-    margin:0 auto 8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#666;
-}
-/* 时间模块 */
-.time-area{
-    margin-bottom:48px;
-}
-.time-area .tip{
-    font-size:16px;
-    color:#555;
-    margin-bottom:6px;
-}
-.time-area .clock{
-    font-size:54px;
-    font-weight:bold;
-    color:#111;
-    line-height:1.1;
-}
-.time-area .date{
-    font-size:17px;
-    color:#444;
-    margin-top:4px;
-}
-/* 按钮容器 */
-.btn-container{
-    max-width:100%;
-}
-.btn-item{
-    display:block;
-    width:100%;
-    padding:19px 12px;
-    background:#2376e3;
-    color:#fff;
-    border:none;
-    border-radius:7px;
-    font-size:16px;
-    margin-bottom:14px;
-    text-align:center;
-    text-decoration:none;
-}
-/* 禁用按钮样式 */
-.btn-disabled{
-    background:#82a4d6;
-    pointer-events:none;
-    cursor:not-allowed;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>极品导航官网</title>
+    <link rel="preload" href="abcd.jpg" as="image" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --border: rgba(0, 0, 0, 0.1);
+            --btn-color: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        html,
+        body {
+            min-height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes breathe {
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 0 0 rgba(52, 152, 219, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 0 20px rgba(52, 152, 219, 0.5);
+            }
+        }
+        @keyframes pulseFade {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .pulse-fade-animation {
+            animation: pulseFade 0.5s cubic-bezier(0.4, 0.2, 1);
+            display: inline-block;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-y: auto;
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+        .announcement {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 30px;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            animation: slideUp 0.6s ease-out 0.1s both;
+        }
+        .announcement-icon {
+            margin-right: 12px;
+            color: var(--accent);
+            font-size: 1.2em;
+        }
+        .announcement-text {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .avatar-slogan-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 18px;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+        .avatar-container {
+            flex-shrink: 0;
+            width: 85px;
+            height: 85px;
+        }
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--white);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: breathe 3s ease-in-out infinite;
+        }
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            animation-play-state: paused;
+        }
+        .slogan-text {
+            flex: 1;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.45;
+            background: linear-gradient(90deg, #ff4d4d, #ff9900, #ffcc00, #33cc33, #3399ff, #9966ff);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: sloganPulse 2.5s ease-in-out infinite, colorFlow 4s linear infinite;
+        }
+        @keyframes sloganPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes colorFlow {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 300% 0%;
+            }
+        }
+        .time-container {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            animation: slideUp 0.6s ease-out 0.2s both;
+        }
+        .time-label {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .time-label i {
+            color: var(--accent);
+        }
+        .time-display {
+            font-size: 2.6em;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-variant-numeric: tabular-nums;
+        }
+        .time-digit {
+            display: inline-block;
+            min-width: 0.6em;
+            text-align: center;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .time-separator {
+            margin: 0 2px;
+            opacity: 0.8;
+            color: #3498db;
+        }
+        .date-display {
+            font-size: 0.9em;
+            color: var(--gray);
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+        .main-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 0.95em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            color: var(--white);
+            background: var(--btn-color);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            z-index: 1;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #3498db, #2980b9, #1c5a7a);
+            border-radius: 14px;
+            z-index: -1;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        .btn:hover::before {
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+        }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        .btn:hover::after {
+            opacity: 1;
+        }
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        .icon {
+            font-size: 1.1em;
+        }
+        .permanent-url {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.9em;
+            color: var(--gray);
+        }
+        .clean-link {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        .clean-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.2s ease;
+        }
+        .clean-link:hover {
+            color: #2980b9;
+        }
+        .clean-link:hover::after {
+            width: 100%;
+        }
+        .copyright {
+            margin-top: 12px;
+            font-size: 0.85em;
+            color: var(--gray);
+        }
+        .copyright span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 380px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #1c5a7a);
+        }
+        .modal-header {
+            margin-bottom: 20px;
+        }
+        .modal-icon {
+            font-size: 2.5em;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        .modal-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        .modal-subtitle {
+            font-size: 0.9em;
+            color: var(--gray);
+        }
+        .modal-body {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .modal-message {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+        }
+        .modal-message p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .modal-message p:last-child {
+            margin-bottom: 0;
+        }
+        .modal-message strong {
+            color: #3498db;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+        }
+        .modal-btn {
+            padding: 14px 30px;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            color: var(--white);
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            min-width: 150px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        .modal-btn:active {
+            transform: translateY(0);
+        }
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .loading-text {
+            display: inline;
+        }
+        .loading .loading-text {
+            display: none;
+        }
+        .loading .loading-spinner {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            .avatar-slogan-row {
+                gap: 12px;
+            }
+            .avatar-container {
+                width: 70px;
+                height: 70px;
+            }
+            .slogan-text {
+                font-size: 15px;
+            }
+            .card {
+                padding: 25px;
+                border-radius: 14px;
+            }
+            .announcement {
+                padding: 14px 18px;
+                margin-bottom: 25px;
+            }
+            .time-container {
+                padding: 12px;
+                margin-bottom: 20px;
+            }
+            .time-display {
+                font-size: 2.2em;
+            }
+            .date-display {
+                font-size: 0.85em;
+            }
+            .btn {
+                padding: 14px 18px;
+                font-size: 0.9em;
+                border-radius: 10px;
+            }
+            .btn::before {
+                border-radius: 12px;
+            }
+            .modal-content {
+                padding: 25px 20px;
+                width: 95%;
+            }
+        }
+        @media (max-width: 360px) {
+            .time-display {
+                font-size: 2em;
+            }
+            .time-label {
+                font-size: 0.85em;
+            }
+            .btn {
+                padding: 12px 15px;
+                font-size: 0.85em;
+            }
+        }
+        @media (max-height: 700px) {
+            .avatar-container {
+                width: 75px;
+                height: 75px;
+            }
+            .btn {
+                padding: 12px 16px;
+            }
+            .announcement {
+                margin-bottom: 20px;
+            }
+        }
+
+        .payment-island {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%) scale(.2);
+            width: 120px;
+            height: 36px;
+            background: #000;
+            border-radius: 22px;
+            color: white;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+            opacity: 0;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .35);
+        }
+        .payment-island.show {
+            animation: islandOpen 2.8s ease forwards;
+        }
+        .payment-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #30d158;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+        }
+        .payment-text {
+            white-space: nowrap;
+            font-weight: 600;
+        }
+        @keyframes islandOpen {
+            0% {
+                opacity: 0;
+                width: 40px;
+                transform: translateX(-50%) scale(.2);
+            }
+            15% {
+                opacity: 1;
+                width: 180px;
+                transform: translateX(-50%) scale(1);
+            }
+            75% {
+                opacity: 1;
+                width: 180px;
+            }
+            100% {
+                opacity: 0;
+                width: 40px;
+                transform: translateX(-50%) scale(.2);
+            }
+        }
+        .top-notice {
+            position: fixed;
+            top: 65px;
+            left: 0;
+            width: max-content;
+            padding: 10px 24px;
+            background: #3498db;
+            color: #fff;
+            border-radius: 0 99px 99px 0;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 9998;
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        .top-notice.in {
+            animation: slideInCenter 1s ease forwards;
+        }
+        .top-notice.out {
+            animation: slideOutLeft 0.8s ease forwards;
+        }
+        @keyframes slideInCenter {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideOutLeft {
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+        }
+        body {
+            background: radial-gradient(circle at top, #263b6b 0%, #101522 35%, #05070d 100%);
+            color: #fff;
+        }
+        .card {
+            background: rgba(255, 255, 255, .10);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, .18);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, .45);
+        }
+        .card::before {
+            height: 5px;
+            background: linear-gradient(90deg, #00eaff, #7b5cff, #ff4fd8);
+        }
+        .announcement,
+        .time-container {
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .15);
+            color: #fff;
+        }
+        .announcement-text,
+        .time-label,
+        .time-display {
+            color: #fff;
+        }
+        .time-digit {
+            background: linear-gradient(180deg, #fff, #8fdcff);
+            -webkit-background-clip: text;
+        }
+        .btn {
+            background: linear-gradient(135deg, #ffffff, #cfd6ff, #6d5cff);
+            color: #111;
+            box-shadow: 0 10px 30px rgba(100, 120, 255, .35);
+            border-radius: 18px;
+        }
+        .btn::before {
+            background: linear-gradient(135deg, #00eaff, #8a5cff, #ff4fd8);
+        }
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+        .modal-content {
+            background: rgba(20, 25, 45, .85);
+            color: #fff;
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, .2);
+        }
+        .modal-title,
+        .modal-message p {
+            color: #fff;
+        }
+        .modal-message {
+            background: rgba(255, 255, 255, .08);
+            border-left-color: #00eaff;
+        }
+        .modal-btn {
+            background: linear-gradient(135deg, #00eaff, #7b5cff, #ff4fd8);
+        }
+        .about-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f8f9fa;
+            z-index: 9999;
+            display: none;
+            overflow-y: auto;
+            padding: 20px;
+            padding-top: 30px;
+            box-sizing: border-box;
+        }
+        .about-modal-overlay.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        .about-modal-content {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .about-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .about-back-btn {
+            position: absolute;
+            left: 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .about-back-btn:hover {
+            background: #e9ecef;
+            transform: scale(0.95);
+        }
+        .about-title-group {
+            flex: 1;
+            text-align: center;
+        }
+        .about-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .about-subtitle {
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+        .about-cards-wrapper {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .about-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px 16px;
+            flex: 1;
+            min-width: 130px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .about-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        .about-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        .about-card-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .about-card-role {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .about-card-btn {
+            margin: 10px 0 12px;
+            padding: 12px 10px;
+            font-size: 13px;
+            border-radius: 10px;
+            background: var(--btn-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+            border: none;
+            transition: 0.3s;
+        }
+        .about-card-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+        }
+        .about-tag {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: var(--gray);
+        }
+        .about-team-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+        .about-team-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .about-team-desc {
+            font-size: 14px;
+            color: var(--secondary);
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .about-location {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        .about-location i {
+            width: 20px;
+            text-align: center;
+            color: var(--accent);
+        }
+        .about-location span {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* ===== 音乐弹窗小部件 ===== */
+        .music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00eaff, #7b5cff);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 8px 25px rgba(0, 234, 255, 0.4);
+            transition: all 0.3s ease;
+            font-size: 1.4em;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .music-toggle:hover {
+            transform: scale(1.1);
+        }
+        .music-panel {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            width: 280px;
+            background: rgba(20, 25, 45, 0.92);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 18px 20px 20px;
+            color: #fff;
+            z-index: 9998;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: bottom right;
+            opacity: 0;
+            transform: scale(0.7) translateY(30px);
+            pointer-events: none;
+        }
+        .music-panel.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+        .music-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 10px;
+        }
+        .music-header span {
+            font-weight: 600;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+            background: linear-gradient(90deg, #00eaff, #7b5cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .music-close-btn {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            transition: 0.3s;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .music-close-btn:hover {
+            background: rgba(255, 0, 0, 0.25);
+            color: #ff6b6b;
+        }
+        .music-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .music-controls button {
+            flex: 1;
+            padding: 10px 0;
+            border: none;
+            border-radius: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.85em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .music-play-btn {
+            background: linear-gradient(135deg, #00eaff, #7b5cff);
+            color: #111;
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+        }
+        .music-play-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 234, 255, 0.5);
+        }
+        .music-stop-btn {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+        .music-stop-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+        }
+        .music-list {
+            max-height: 160px;
+            overflow-y: auto;
+        }
+        .music-list-title {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+        .music-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .music-list li {
+            padding: 10px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: rgba(255, 255, 255, 0.04);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+        .music-list li:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .music-list li.playing {
+            background: rgba(0, 234, 255, 0.15);
+            border: 1px solid rgba(0, 234, 255, 0.25);
+        }
+        .music-list li i {
+            width: 20px;
+            text-align: center;
+            color: #00eaff;
+            font-size: 0.9em;
+        }
+        .music-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .music-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .music-list::-webkit-scrollbar-thumb {
+            background: #00eaff;
+            border-radius: 4px;
+        }
+        @media (max-width: 480px) {
+            .music-panel {
+                right: 15px;
+                bottom: 85px;
+                width: 250px;
+            }
+            .music-toggle {
+                right: 15px;
+                bottom: 20px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- 头像 -->
-<div class="avatar-box">
-    <div class="avatar">头像</div>
-</div>
+    <div class="top-notice" id="topNotice">欢迎光临本站</div>
+    <div class="payment-island" id="paymentIsland">
+        <div class="payment-check">✓</div>
+        <div class="payment-text">欢迎老板</div>
+    </div>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <h2 class="modal-title">极品数据号提醒您</h2>
+                <p class="modal-subtitle">重要通知，请仔细阅读</p>
+            </div>
 
-<!-- 北京时间 -->
-<div class="time-area">
-    <p class="tip">⏱️ 北京时间</p>
-    <div class="clock" id="timeStr">00:00:00</div>
-    <p class="date" id="dateStr">2026年07月10日 星期五</p>
-</div>
+            <div class="modal-body">
+                <div class="modal-message">
+                    <p><strong>1. 购买前请开始录屏，上号失败没视频不售后</strong></p>
+                    <p>所以为确保您的权益，建议在购买前开始录屏，记录整个交易过程。</p>
 
-<!-- 按钮列表 共6个 -->
-<div class="btn-container">
-    <a href="https://caiyunqk.cn/shop/8F8BQ6LT" target="_blank" class="btn-item">🛒 粉止水购买主卡网</a>
-    <a href="https://wwbas.lanzouv.com/iuoD03v8llaf" target="_blank" class="btn-item">⬇️ 上号器下载地址（密码fzsnb）</a>
-    <a href="https://wwbas.lanzouv.com/iUDmO3v8ln6d" target="_blank" class="btn-item">🔍 下载查询、禁玩器（密码fzsnb）</a>
-    <a href="https://wwbas.lanzouv.com/icHTU3vdx47c" target="_blank" class="btn-item">🚫 下载和平过滤器密码（fzsnb）</a>
-    <!-- 新增按钮 -->
-    <a href="http://160.202.238.153:6015/" target="_blank" class="btn-item">点击进入循环禁</a>
-    <!-- 不可点击按钮 -->
-    <div class="btn-item btn-disabled">“℡”粉止水主频道@jipin66678</div>
-</div>
+                    <p><strong>2. 遇到问题联系快手极品或✈@jipin66678</strong></p>
+                    <p>如果有任何疑问或问题，请联系qq1139155953。</p>
+                </div>
+            </div>
 
-<script>
-// 实时更新时间日期
-function refreshTime(){
-    const now = new Date();
-    let h = String(now.getHours()).padStart(2,'0');
-    let m = String(now.getMinutes()).padStart(2,'0');
-    let s = String(now.getSeconds()).padStart(2,'0');
-    document.getElementById('timeStr').innerText = `${h}:${m}:${s}`;
-}
-refreshTime();
-setInterval(refreshTime,1000);
-</script>
+            <div class="modal-actions">
+                <button class="modal-btn" id="confirmBtn">
+                    <span class="loading-text">好的，我很聪明，我看完了</span>
+                    <div class="loading-spinner"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="announcement">
+                <i class="announcement-icon fas fa-compass"></i>
+                <div class="announcement-text">极品导航官网</div>
+            </div>
+
+            <div class="avatar-slogan-row">
+                <div class="avatar-container">
+                    <img src="https://i.imgs.ovh/2026/07/10/b534aed52a0da4121cdda51161978fc7.jpg" alt="粉止水导航头像" class="avatar" loading="eager">
+                </div>
+                <div class="slogan-text">赚钱不只是为了钱，而是为了让自己开心</div>
+            </div>
+
+            <div class="time-container">
+                <div class="time-label">
+                    <i class="far fa-clock"></i> 北京时间
+                </div>
+                <div class="time-display" id="beijingTime">
+                    正在加载时间...
+                </div>
+                <div class="date-display" id="beijingDate">
+                    正在加载日期...
+                </div>
+            </div>
+
+            <div class="main-buttons">
+                <a href="" class="btn" style="animation-delay: 0.2s;">
+                    <i class="icon fas fa-shopping-cart"></i>
+                    极品购买主卡网 未完工
+                </a>
+                <a href="" class="btn" style="animation-delay: 0.3s;">
+                    <i class="icon fas fa-download"></i>
+                    上号器下载地址 未完工
+                </a>
+                <a href="" class="btn" style="animation-delay: 0.4s;">
+                    <i class="icon fas fa-search"></i>
+                    点击下载查询器 未完工
+                </a>
+                <a href="" class="btn" style="animation-delay: 0.5s;">
+                    <i class="icon fas fa-ban"></i>
+                    下载和平过滤器 未完工
+                </a>
+                <a href="https://替换为你的跳转网址" target="_blank" class="btn" style="animation-delay: 0.65s;">
+                    <i class="icon fas fa-repeat"></i>
+                    点击进入循环禁
+                </a>
+                <a href="" class="btn" style="animation-delay: 0.7s;">
+                    <i class="icon fas fa-broadcast-tower"></i>
+                    极品主频道@jipin66678
+                </a>
+                <a href="" class="btn" style="animation-delay: 0.8s;" target="_blank">
+                    <i class="icon fab fa-qq"></i>
+                    官方QQ群点我加入 未完工
+                </a>
+            </div>
+
+            <div class="permanent-url">
+                永久地址：<a href="" target="_blank" class="clean-link">未完工</a>（收藏不迷路）
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
+                    <a href="javascript:void(0)" id="aboutBtn" class="btn" style="font-size: 0.95em; border-radius: 12px; margin-bottom: 0;">
+                        <i class="icon fas fa-info-circle"></i> 关于极品
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; <span id="current-year">粉止水</span> - 官方导航
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="about-modal-overlay">
+        <div class="about-modal-content">
+            <div class="about-header">
+                <a href="javascript:void(0)" id="aboutBackBtn" class="about-back-btn"><i class="fas fa-arrow-left"></i></a>
+                <div class="about-title-group">
+                    <div class="about-title">关于我</div>
+                    <div class="about-subtitle" id="aboutSubtitleText">一个有理想的人</div>
+                </div>
+            </div>
+
+            <div class="about-cards-wrapper">
+                <div class="about-card">
+                    <img id="card1Img" src="https://i.imgs.ovh/2026/07/10/b534aed52a0da4121cdda51161978fc7.jpg" alt="头像">
+                    <div class="about-card-name" id="card1Name">极品</div>
+                    <div class="about-card-role" id="card1Role">极品</div>
+                    <a href="javascript:void(0)" class="about-card-btn" id="card1Btn"><i class="fas fa-star icon"></i> 定制网页可找</a>
+                    <div class="about-tags" id="card1Tags">
+                        <span class="about-tag">目前不卖号</span>
+                        <span class="about-tag">长得挺帅🥱</span>
+                        <span class="about-tag">网址设计</span>
+                    </div>
+                </div>
+
+                <div class="about-card">
+                    <img id="card2Img" src="https://cdn-icons-png.flaticon.com/512/2921/2921226.png" alt="头像">
+                    <div class="about-card-name" id="card2Name">梦狄</div>
+                    <div class="about-card-role" id="card2Role">诚信和平号商</div>
+                    <a href="javascript:void(0)" class="about-card-btn" id="card2Btn"><i class="fas fa-code icon"></i>进和平数据号可找</a>
+                    <div class="about-tags" id="card2Tags">
+                        <span class="about-tag">大量和平号</span>
+                        <span class="about-tag">和平过滤器</span>
+                        <span class="about-tag">质量号</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-team-card">
+                <div class="about-team-title"><i class="fas fa-users" style="color: var(--accent);"></i> 关于极品</div>
+                <div class="about-team-desc" id="aboutTeamDesc">
+                    先要感谢🙏：旧念、鼬神、粉止水、小信、粉佐助。是他们给了我做网址的灵感和信心，其中我借助了：鼬神、粉止水、小信的源码，十分感谢，祝你们在数据号这条路上越走越远，越来越好
+                    我之前本是一个卖和平号的普通人，但卖和平号的人越来越多,我干不下去了，我也通知了我的号商。偶然看到了火影忍者手游，我就开始做火影忍者数据号，但这条路并不好走。
+                </div>
+            </div>
+
+            <div class="about-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>所在地：中国</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 音乐弹窗 HTML（已修复 audio 闭合 + 默认可用音频源） ===== -->
+    <div class="music-toggle" id="musicToggle">
+        <i class="fas fa-music"></i>
+    </div>
+    <div class="music-panel" id="musicPanel">
+        <div class="music-header">
+            <span><i class="fas fa-headphones" style="margin-right:6px;"></i> 音乐小窝</span>
+            <div class="music-close-btn" id="musicClose"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="music-controls">
+            <button class="music-play-btn" id="playBtn"><i class="fas fa-play"></i> 播放</button>
+            <button class="music-stop-btn" id="stopBtn"><i class="fas fa-stop"></i> 停止</button>
+        </div>
+        <div class="music-list">
+            <div class="music-list-title"><i class="fas fa-list-ul"></i> ★ 点击歌曲播放 ↓</div>
+            <ul id="songList">
+                <!-- 第一首：改为 SoundHelix 可用示例，确保能出声 -->
+                <li data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+                    <i class="fas fa-play-circle"></i> 示例歌曲 1（可用）
+                </li>
+                <li data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+                    <i class="fas fa-play-circle"></i> 示例歌曲 2（可用）
+                </li>
+                <li data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
+                    <i class="fas fa-play-circle"></i> 示例歌曲 3（可用）
+                </li>
+            </ul>
+        </div>
+        <!-- ✅ 修复：audio 标签正确闭合，并添加 preload 与 controls（隐藏） -->
+        <audio id="audioPlayer" preload="metadata" style="display:none;"></audio>
+    </div>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        window.addEventListener('load', () => {
+            const notice = document.getElementById('topNotice');
+            notice.classList.add('in');
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach((btn, index) => {
+                btn.style.animation = 'slideUp 0.5s ease-out ' + (0.2 + index * 0.1) + 's both';
+            });
+        });
+
+        // 极速版：点击即转圈，灵动岛同步触发，弹窗0.2秒快速滑走
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalOverlay = document.getElementById('modalOverlay');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const topNotice = document.getElementById('topNotice');
+            const paymentIsland = document.getElementById('paymentIsland');
+
+            modalOverlay.style.display = 'flex';
+
+            confirmBtn.addEventListener('click', function() {
+                confirmBtn.classList.add('loading');
+                paymentIsland.classList.remove('show');
+                void paymentIsland.offsetWidth;
+                paymentIsland.classList.add('show');
+                topNotice.classList.remove('in');
+                void topNotice.offsetWidth;
+                topNotice.classList.add('out');
+                setTimeout(function() {
+                    modalOverlay.style.display = 'none';
+                    confirmBtn.classList.remove('loading');
+                }, 200);
+            });
+
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    modalOverlay.style.display = 'none';
+                }
+            });
+        });
+
+        // 时钟
+        let prevTime = "";
+        const timeBox = document.getElementById("beijingTime");
+        const dateBox = document.getElementById("beijingDate");
+        const weekArr = ["日", "一", "二", "三", "四", "五", "六"];
+
+        function refreshTime() {
+            const now = new Date();
+            let h = String(now.getHours()).padStart(2, "0");
+            let m = String(now.getMinutes()).padStart(2, "0");
+            let s = String(now.getSeconds()).padStart(2, "0");
+            let nowTimeStr = `${h}:${m}:${s}`;
+            let y = now.getFullYear();
+            let mo = String(now.getMonth() + 1).padStart(2, "0");
+            let d = String(now.getDate()).padStart(2, "0");
+            let w = weekArr[now.getDay()];
+            dateBox.innerText = `${y}年${mo}月${d}日 星期${w}`;
+            if (nowTimeStr === prevTime) return;
+            prevTime = nowTimeStr;
+            timeBox.innerHTML = "";
+            let timeChars = nowTimeStr.split("");
+            timeChars.forEach(char => {
+                let span = document.createElement("span");
+                if (char === ":") {
+                    span.className = "time-separator";
+                } else {
+                    span.className = "time-digit pulse-fade-animation";
+                }
+                span.innerText = char;
+                timeBox.appendChild(span);
+            })
+        }
+        refreshTime();
+        setInterval(refreshTime, 1000);
+
+        // 关于页面配置
+        const aboutConfig = {
+            subtitle: "普通人",
+            card1: {
+                imgUrl: "https://i.imgs.ovh/2026/07/10/b534aed52a0da4121cdda51161978fc7.jpg",
+                name: "极品",
+                role: "极品本人",
+                btnText: "定制网页可找",
+                tags: ["目前不卖号", "长得挺帅🥱", "网址设计"]
+            },
+            card2: {
+                imgUrl: "https://cdn-icons-png.flaticon.com/512/2921/2921226.png",
+                name: "梦狄",
+                role: "和平号号商",
+                btnText: "诚信号商",
+                tags: ["质量不错", "和平过滤器", "数量很多"]
+            },
+            teamDesc: "先要感谢🙏：旧念、鼬神、粉止水、小信、粉佐助。是他们给了我做网址的灵感和信心，其中我借助了：鼬神、粉止水、小信的源码，十分感谢，祝你们在数据号这条路上越走越远，越来越好。我之前本是一个卖和平号的普通人，但卖和平号的人越来越多,我干不下去了，我也通知了我的号商。偶然看到了火影忍者手游，我就开始做火影忍者数据号，但这条路并不好走。"
+        };
+        document.getElementById('aboutSubtitleText').innerText = aboutConfig.subtitle;
+        document.getElementById('card1Img').src = aboutConfig.card1.imgUrl;
+        document.getElementById('card1Name').innerText = aboutConfig.card1.name;
+        document.getElementById('card1Role').innerText = aboutConfig.card1.role;
+        document.getElementById('card1Btn').innerHTML = `<i class="fas fa-star icon"></i> ${aboutConfig.card1.btnText}`;
+        const tags1 = document.getElementById('card1Tags');
+        tags1.innerHTML = '';
+        aboutConfig.card1.tags.forEach(t => { let span = document.createElement('span');
+            span.className = 'about-tag';
+            span.innerText = t;
+            tags1.appendChild(span); });
+        document.getElementById('card2Img').src = aboutConfig.card2.imgUrl;
+        document.getElementById('card2Name').innerText = aboutConfig.card2.name;
+        document.getElementById('card2Role').innerText = aboutConfig.card2.role;
+        document.getElementById('card2Btn').innerHTML = `<i class="fas fa-code icon"></i> ${aboutConfig.card2.btnText}`;
+        const tags2 = document.getElementById('card2Tags');
+        tags2.innerHTML = '';
+        aboutConfig.card2.tags.forEach(t => { let span = document.createElement('span');
+            span.className = 'about-tag';
+            span.innerText = t;
+            tags2.appendChild(span); });
+        document.getElementById('aboutTeamDesc').innerText = aboutConfig.teamDesc;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutBtn = document.getElementById('aboutBtn');
+            const aboutModal = document.getElementById('aboutModal');
+            const backBtn = document.getElementById('aboutBackBtn');
+            aboutBtn.addEventListener('click', function() {
+                aboutModal.classList.add('active');
+                window.scrollTo(0, 0);
+            });
+            backBtn.addEventListener('click', function() {
+                aboutModal.classList.remove('active');
+            });
+        });
+
+        // ===== 音乐弹窗 JS（修复：默认使用可用音频，增加错误提示） =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('musicToggle');
+            const panel = document.getElementById('musicPanel');
+            const closeBtn = document.getElementById('musicClose');
+            const playBtn = document.getElementById('playBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const audio = document.getElementById('audioPlayer');
+
+            // 强制开启音量
+            audio.volume = 1;
+            audio.muted = false;
+
+            const songItems = document.querySelectorAll('#songList li');
+            let currentSong = null;
+
+            // 切换面板
+            toggle.addEventListener('click', function() {
+                panel.classList.toggle('active');
+            });
+            closeBtn.addEventListener('click', function() {
+                panel.classList.remove('active');
+            });
+
+            // 播放
+            playBtn.addEventListener('click', function() {
+                // 如果没有任何歌曲被选中，默认选中第一首（可用示例）
+                if (!audio.src || audio.src === '') {
+                    const first = songItems[0];
+                    if (first) {
+                        audio.src = first.dataset.src;
+                        first.classList.add('playing');
+                    } else {
+                        alert('没有可用的歌曲！');
+                        return;
+                    }
+                }
+                // 尝试播放，捕获可能出现的错误（如网络问题）
+                audio.play().catch(function(e) {
+                    console.warn('播放失败:', e);
+                    // 如果当前源无法播放，尝试切换至第一首可用歌曲
+                    if (songItems.length > 0) {
+                        const fallback = songItems[0];
+                        if (fallback.dataset.src !== audio.src) {
+                            audio.src = fallback.dataset.src;
+                            songItems.forEach(li => li.classList.remove('playing'));
+                            fallback.classList.add('playing');
+                            audio.play().catch(function(e2) {
+                                alert('音频加载失败，请检查网络或更换歌曲。');
+                            });
+                        } else {
+                            alert('音频加载失败，请检查网络或更换歌曲。');
+                        }
+                    }
+                });
+                // 更新高亮（如果播放的是列表中的歌曲）
+                songItems.forEach(li => li.classList.remove('playing'));
+                const activeLi = document.querySelector(`#songList li[data-src="${audio.src}"]`);
+                if (activeLi) activeLi.classList.add('playing');
+            });
+
+            // 停止
+            stopBtn.addEventListener('click', function() {
+                audio.pause();
+                audio.currentTime = 0;
+                songItems.forEach(li => li.classList.remove('playing'));
+            });
+
+            // 点击歌曲切换
+            songItems.forEach(li => {
+                li.addEventListener('click', function() {
+                    const src = this.dataset.src;
+                    if (!src) return;
+                    // 如果相同且正在播放，不做特殊处理，直接播放
+                    if (audio.src !== src) {
+                        audio.src = src;
+                    }
+                    audio.play().catch(function(e) {
+                        console.warn('播放失败:', e);
+                        alert('音频加载失败，请检查网络或更换歌曲。');
+                    });
+                    songItems.forEach(item => item.classList.remove('playing'));
+                    this.classList.add('playing');
+                    // 自动展开面板
+                    if (!panel.classList.contains('active')) {
+                        panel.classList.add('active');
+                    }
+                });
+            });
+
+            // 播放结束自动移除高亮
+            audio.addEventListener('ended', function() {
+                songItems.forEach(li => li.classList.remove('playing'));
+            });
+
+            // 音频加载出错时提示
+            audio.addEventListener('error', function(e) {
+                console.warn('音频加载错误:', e);
+                // 如果当前播放的歌曲出错，自动切换到下一首（这里简单处理，仅移除高亮）
+                songItems.forEach(li => li.classList.remove('playing'));
+            });
+        });
+    </script>
 </body>
 </html>
