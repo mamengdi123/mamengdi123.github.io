@@ -1,517 +1,211 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>火影数据号 ·质量 ·便宜</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>小州弱网 - 验证中心</title>
     <style>
-        /* ===== 全局重置 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft Yahei", sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+
         body {
-            min-height: 100vh;
-            /* 背景保持原有渐变，粒子将置于上层但透明不遮挡 */
-            background: radial-gradient(ellipse at 40% 20%, rgba(60, 120, 255, 0.12) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 80%, rgba(120, 60, 255, 0.08) 0%, transparent 50%),
-                linear-gradient(145deg, #080c18 0%, #0d1a2e 45%, #141f3a 100%);
-            overflow-x: hidden;
-            line-height: 1.6;
-            color: #e8edf5;
-            position: relative;
-        }
-        /* 装饰性微光线条（保留，与粒子共存） */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -20%;
-            left: -10%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(96, 165, 250, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 1; /* 粒子在z-index:0，此光晕在1，内容在10 */
-        }
-
-        /* ===== 粒子背景（固定定位） ===== */
-        #particles-bg {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            display: block;
-        }
-
-        .page {
-            position: relative;
-            z-index: 10;
-        }
-
-        /* ===== 导航 ===== */
-        nav {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 999;
-            padding: 16px 5%;
+            background: #020105;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(8, 12, 24, 0.60);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(100, 160, 255, 0.08);
-            transition: background 0.3s;
-        }
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #f0f4ff, #80b5ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .nav-links {
-            display: flex;
-            gap: 32px;
-        }
-        .nav-links a {
-            color: #c8d6f0;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.25s, transform 0.2s;
-        }
-        .nav-links a:hover {
-            color: #80b5ff;
-            transform: translateY(-1px);
-        }
-
-        /* ===== Hero ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            color: #fff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* --- 主容器 (整体缩小版，确保上下边框可见) --- */
+        .glass-card {
+            position: relative;
+            width: 82%;
+            max-width: 340px;
+            padding: 28px 22px 22px;
+            background: rgba(255, 255, 255, 0.04); 
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-radius: 22px;
             text-align: center;
-            padding: 0 5% 40px;
-        }
-        #mainTitle {
-            font-size: clamp(52px, 11vw, 110px);
-            font-weight: 700;
-            letter-spacing: -2px;
-            line-height: 1.05;
-            color: #fff;
-            text-shadow: 0 4px 30px rgba(0, 20, 80, 0.3);
-        }
-        #mainTitle span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: wordUp 0.65s ease forwards;
-        }
-        @keyframes wordUp {
-            to { opacity: 1; transform: translateY(0); }
+            
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 
+                0 0 30px rgba(176, 102, 255, 0.2),
+                0 25px 50px -12px rgba(0, 0, 0, 0.9),
+                inset 0 1px 1px rgba(255, 255, 255, 0.5),
+                inset 0 -1px 1px rgba(255, 255, 255, 0.1); 
         }
 
-        .hero-desc {
-            font-size: clamp(16px, 2.2vw, 21px);
-            color: #a5b4fc;
-            margin: 24px 0 36px;
-            max-width: 700px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-            letter-spacing: 0.3px;
-        }
-
-        /* ===== 按钮组 ===== */
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 18px 24px;
-            margin-top: 6px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 40px;
-            border-radius: 999px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            position: relative;
-            letter-spacing: 0.5px;
-        }
-        .btn:focus, .btn:active {
-            outline: none;
-            box-shadow: none;
-        }
-
-        .btn-primary {
-            background: rgba(255, 255, 255, 0.95);
-            color: #0a1628;
-            box-shadow: 0 8px 28px rgba(255, 255, 255, 0.10);
-        }
-        .btn-primary:hover {
-            background: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 14px 40px rgba(255, 255, 255, 0.20);
-        }
-        .btn-primary:active {
-            transform: scale(0.96);
-        }
-
-        .btn-gold {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            color: #1a1a2e;
-            box-shadow: 0 8px 32px rgba(253, 160, 133, 0.30);
-        }
-        .btn-gold:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 16px 48px rgba(253, 160, 133, 0.45);
-        }
-        .btn-gold:active {
-            transform: scale(0.95);
-        }
-
-        .btn-gold::after {
+        /* --- 动态流光边框 --- */
+        .glass-card::before {
             content: '';
             position: absolute;
             inset: -2px;
-            border-radius: 999px;
-            background: inherit;
-            filter: blur(12px);
-            opacity: 0.3;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(120deg, transparent 0%, rgba(176, 102, 255, 0.3) 30%, rgba(224, 170, 255, 1) 50%, rgba(176, 102, 255, 0.3) 70%, transparent 100%);
+            background-size: 200% 200%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: liquid-flow 4s linear infinite;
             z-index: -1;
-            transition: opacity 0.4s;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 5px rgba(176, 102, 255, 0.5));
         }
-        .btn-gold:hover::after {
-            opacity: 0.6;
-        }
+        @keyframes liquid-flow { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        /* ===== 其他 section ===== */
-        .section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 5% 60px;
-        }
-        .sec-title {
-            text-align: center;
-            margin-bottom: 56px;
-        }
-        .sec-title h2 {
-            font-size: clamp(30px, 4.5vw, 42px);
-            margin-bottom: 14px;
-            color: #fff;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-        .sec-title p {
-            color: #a5b4fc;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        /* --- 四角能量节点 --- */
+        .corner { position: absolute; width: 10px; height: 10px; background: radial-gradient(circle, #fff 0%, #c77dff 40%, transparent 80%); border-radius: 50%; box-shadow: 0 0 10px #c77dff, 0 0 20px #7b2cbf; z-index: 2; animation: corner-breathe 3s ease-in-out infinite; }
+        .tl { top: -5px; left: -5px; } .tr { top: -5px; right: -5px; animation-delay: 0.75s; }
+        .bl { bottom: -5px; left: -5px; animation-delay: 1.5s; } .br { bottom: -5px; right: -5px; animation-delay: 2.25s; }
+        @keyframes corner-breathe { 0%, 100% { transform: scale(0.8); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; filter: brightness(1.5); } }
 
-        /* ===== 卡片 ===== */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 28px;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 28px;
-            padding: 36px 28px 32px;
-            border: 1px solid rgba(96, 165, 250, 0.10);
-            transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            backdrop-filter: blur(6px);
-            position: relative;
-            overflow: hidden;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.3), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(96, 165, 250, 0.25);
-            box-shadow: 0 20px 50px rgba(0, 30, 80, 0.25);
-        }
-        .card .icon {
-            font-size: 32px;
-            margin-bottom: 16px;
-            display: block;
-            opacity: 0.8;
-        }
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            color: #fff;
-            font-weight: 600;
-        }
-        .card p {
-            color: #c8d6f0;
-            font-size: 15px;
-            line-height: 1.7;
-        }
+        /* --- 标题与文案 (间距全面压缩) --- */
+        .main-title { font-size: 1.8rem; font-weight: 800; color: #fff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(176, 102, 255, 0.4); margin-bottom: 2px; letter-spacing: 2px; }
+        .sub-title { font-size: 0.65rem; color: rgba(255,255,255,0.5); letter-spacing: 5px; margin-bottom: 18px; font-weight: 300; text-transform: uppercase; }
+        .feature-text { color: #e0aaff; font-size: 0.95rem; font-weight: bold; margin-bottom: 4px; text-shadow: 0 0 10px rgba(197, 138, 255, 0.6); }
+        .desc-text { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
 
-        /* ===== About & Contact ===== */
-        .about-box, .contact-box {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 30px;
-            padding: 50px 40px;
-            text-align: center;
-            border: 1px solid rgba(96, 165, 250, 0.10);
-            backdrop-filter: blur(6px);
-        }
-        .about-box p {
-            max-width: 740px;
-            margin: 0 auto;
-            color: #c8d6f0;
-            font-size: 17px;
-            line-height: 1.8;
-        }
-        .contact-box p {
-            font-size: 19px;
-            color: #e8edf5;
-            font-weight: 500;
-            margin: 14px 0;
-        }
-        .contact-box a {
-            color: #80b5ff;
-            text-decoration: none;
-            transition: color 0.2s, border-bottom 0.2s;
-            border-bottom: 1px solid transparent;
-        }
-        .contact-box a:hover {
-            color: #b5d4ff;
-            border-bottom-color: #80b5ff;
-        }
+        /* --- 图标区域 (缩小) --- */
+        .icon-box { width: 65px; height: 65px; margin: 0 auto 18px; background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); border-radius: 18px; border: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+        .icon-box::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent); transform: rotate(45deg); animation: shine-sweep 4s infinite; }
+        @keyframes shine-sweep { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+        .icon-text { font-size: 10px; color: #fff; font-weight: bold; z-index: 2; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-        footer {
-            text-align: center;
-            padding: 40px 5% 30px;
-            color: #5a6f8c;
-            font-size: 13px;
-            border-top: 1px solid rgba(255,255,255,0.04);
-            margin-top: 20px;
-            letter-spacing: 0.5px;
-        }
+        /* --- 服务器压力监控面板 (间距压缩) --- */
+        .server-monitor { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; background: rgba(0, 0, 0, 0.2); padding: 12px 8px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); box-shadow: inset 0 2px 10px rgba(0,0,0,0.2); }
+        .monitor-item { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .monitor-label { font-size: 0.55rem; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-bottom: 4px; }
+        .monitor-value { font-size: 1rem; font-family: 'Courier New', monospace; font-weight: bold; color: #d4aaff; text-shadow: 0 0 8px rgba(176, 102, 255, 0.5); }
 
-        /* ===== 响应式 ===== */
-        @media (max-width: 768px) {
-            .nav-links { gap: 18px; }
-            .btn { padding: 12px 30px; font-size: 15px; }
-            .section { padding: 60px 5% 40px; }
-            .card { padding: 28px 20px; }
-            .about-box, .contact-box { padding: 32px 20px; }
-        }
-        @media (max-width: 480px) {
-            .btn-group { gap: 14px; }
-            .btn { padding: 10px 24px; font-size: 14px; }
-        }
+        /* --- 动态切换区域 --- */
+        .dynamic-area { min-height: 120px; display: flex; flex-direction: column; justify-content: center; transition: all 0.5s ease; }
+
+        /* 状态1：登录表单 */
+        .login-form { display: flex; flex-direction: column; gap: 10px; width: 100%; transition: opacity 0.3s; }
+        .tech-input { width: 100%; padding: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; color: #fff; text-align: center; font-size: 0.9rem; transition: all 0.3s ease; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2); }
+        .tech-input:focus { border-color: rgba(224, 170, 255, 0.6); box-shadow: 0 0 15px rgba(224, 170, 255, 0.3), inset 0 0 10px rgba(224, 170, 255, 0.1); background: rgba(0, 0, 0, 0.5); }
+        .tech-input::placeholder { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+        /* 状态2：防封监控 */
+        .security-panel { display: none; background: rgba(0, 255, 100, 0.05); border: 1px solid rgba(0, 255, 100, 0.3); border-radius: 14px; padding: 14px; flex-direction: column; gap: 10px; animation: fade-in-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0, 255, 100, 0.1); }
+        @keyframes fade-in-up { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .status-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #eee; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+        .status-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .status-label { display: flex; align-items: center; gap: 8px; }
+        .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 10px #00ff88; animation: pulse-green 1.5s infinite; }
+        @keyframes pulse-green { 0% { opacity: 0.4; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 15px #00ff88; } 100% { opacity: 0.4; transform: scale(0.8); } }
+        .status-text-val { font-family: monospace; font-weight: bold; color: #00ff88; text-shadow: 0 0 5px rgba(0, 255, 136, 0.5); }
+
+        /* --- 按钮样式 (高度压缩) --- */
+        .action-btn { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.25); color: #e0aaff; font-size: 0.95rem; border-radius: 50px; cursor: pointer; transition: all 0.3s; margin-top: 10px; font-weight: 600; letter-spacing: 1px; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .action-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: 0.6s; }
+        .action-btn:hover::before { left: 100%; }
+        .action-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: #e0aaff; box-shadow: 0 0 25px rgba(176, 102, 255, 0.4); transform: translateY(-2px); }
+        .action-btn:active { transform: scale(0.96); }
+
+        .enter-btn { display: none; background: rgba(0, 255, 100, 0.1); border: 1px solid rgba(0, 255, 100, 0.4); color: #fff; box-shadow: 0 0 20px rgba(0, 255, 100, 0.2); margin-top: 12px; }
+        .enter-btn:hover { background: rgba(0, 255, 100, 0.2); box-shadow: 0 0 30px rgba(0, 255, 100, 0.4); }
+
+        .footer { font-size: 0.6rem; color: rgba(255,255,255,0.2); margin-top: 15px; }
     </style>
 </head>
 <body>
 
-    <!-- 粒子背景画布 -->
-    <canvas id="particles-bg"></canvas>
+    <div class="glass-card">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
 
-    <div class="page">
-        <!-- 导航 -->
-        <nav>
-            <div class="logo">火影数据号</div>
-            <div class="nav-links">
-                <a href="#home">首页</a>
-                <a href="#service">开发服务</a>
-                <a href="#about">关于我们</a>
-                <a href="#contact">联系我们</a>
+        <h1 class="main-title">小州弱网</h1>
+        <div class="sub-title">XIAO ZHOU</div>
+
+        <div class="icon-box"><span class="icon-text">⚡ 小州弱网</span></div>
+
+        <div class="feature-text">全网独家 AI端循环处理</div>
+        <div class="desc-text">预防所有封号检测和人脸</div>
+
+        <div class="server-monitor">
+            <div class="monitor-item">
+                <div class="monitor-label">CPU 负载</div>
+                <div class="monitor-value" id="cpu-val">35%</div>
             </div>
-        </nav>
-
-        <!-- Hero -->
-        <div class="hero" id="home">
-            <div id="mainTitle">粉止水数据号引导页</div>
-            <div class="hero-desc">粉止水官网 · 便宜质量 · 目前900多人买过 · 上号器、查询器等定制</div>
-
-            <div class="btn-group">
-                <a href="#service" class="btn btn-primary">查看服务</a>
-                <a href="http://jipin.cc.cd/fzs/" class="btn btn-gold" id="buyBtn" target="_blank">前往购买 🥱</a>
+            <div class="monitor-item">
+                <div class="monitor-label">内存占用</div>
+                <div class="monitor-value" id="ram-val">52%</div>
+            </div>
+            <div class="monitor-item">
+                <div class="monitor-label">网络延迟</div>
+                <div class="monitor-value" id="ping-val" style="color:#00ff88;">20ms</div>
             </div>
         </div>
 
-        <!-- 服务 -->
-        <div class="section" id="service">
-            <div class="sec-title">
-                <h2>数据号购买服务</h2>
-                <p>粉止水玩了一年半数据 · 主打质量 · 便宜 · 稳定</p>
+        <div class="dynamic-area">
+            <div class="login-form" id="loginForm">
+                <input type="text" id="username" class="tech-input" value="xznb" placeholder="请输入卡密/账号">
+                <input type="password" id="password" class="tech-input" value="xznb" placeholder="请输入密码">
+                <button class="action-btn" onclick="startVerification()">立即验证</button>
             </div>
-            <div class="cards">
-                <div class="card">
-                    <span class="icon">😋</span>
-                    <h3>上号器、查询器开发</h3>
-                    <p>高端上号器、查询器、响应式布局，适配电脑、平板与手机。</p>
+
+            <div class="security-panel" id="securityPanel">
+                <div class="status-row">
+                    <div class="status-label"><div class="status-dot"></div>人脸拦截系统</div>
+                    <div class="status-text-val">运行中</div>
                 </div>
-                <div class="card">
-                    <span class="icon">📄</span>
-                    <h3>静态页面定制</h3>
-                    <p>HTML单页、落地页、活动页、科技风页面设计，轻量部署，加载稳定。</p>
+                <div class="status-row">
+                    <div class="status-label"><div class="status-dot"></div>封号检测防御</div>
+                    <div class="status-text-val">已激活</div>
                 </div>
-                <div class="card">
-                    <span class="icon">🎨</span>
-                    <h3>粉止水数据号</h3>
-                    <p>良好的买号素质、优质的服务、号的价格和质量。</p>
-                </div>
-                <div class="card">
-                    <span class="icon">🥱</span>
-                    <h3>上号器、查询器定制</h3>
-                    <p>优美ui、多种功能、权限处理、各种东西都可定制。</p>
+                <div class="status-row">
+                    <div class="status-label"><div class="status-dot"></div>设备环境伪装</div>
+                    <div class="status-text-val">安全</div>
                 </div>
             </div>
         </div>
 
-        <!-- 关于 -->
-        <div class="section" id="about">
-            <div class="sec-title">
-                <h2>关于我们</h2>
-                <p>专注数据售卖与页面定制</p>
-            </div>
-            <div class="about-box">
-                <p>我们专注高端软件开发与页面定制，以简洁、稳定、可扩展为核心，为你们和品牌打造从视觉到功能的完整网站解决方案。无论是品牌官网、展示站点、业务平台，还是现有系统美化二开，我们都能提供清晰、高效、易维护的开发服务。</p>
-            </div>
-        </div>
-
-        <!-- 联系 -->
-        <div class="section" id="contact">
-            <div class="sec-title">
-                <h2>联系我们</h2>
-            </div>
-            <div class="contact-box">
-                <p>QQ：<a target="_blank" href="">2893221907</a></p>
-                <p>快手：<a href="">fzsnb7891</a></p>
-            </div>
-        </div>
-
-        <footer>© 2026 数据售卖 · 高端软件开发 All Rights Reserved</footer>
+        <button class="action-btn enter-btn" id="enterBtn" onclick="enterSystem()">已进入系统</button>
+        <div class="footer">© 2026 小州弱网</div>
     </div>
 
     <script>
-        // ===== 标题逐字动画 =====
-        window.addEventListener('load', function() {
-            const titleDom = document.getElementById('mainTitle');
-            const text = titleDom.innerText;
-            titleDom.innerHTML = '';
-            for (let i = 0; i < text.length; i++) {
-                const span = document.createElement('span');
-                span.innerText = text[i];
-                span.style.animationDelay = i * 0.18 + 's';
-                titleDom.appendChild(span);
-            }
-        });
+        function startVerification() {
+            const loginForm = document.getElementById('loginForm');
+            const securityPanel = document.getElementById('securityPanel');
+            const enterBtn = document.getElementById('enterBtn');
+            const btn = loginForm.querySelector('.action-btn');
 
-        // ===== 粒子背景动画（还原自原始代码） =====
-        (function() {
-            const canvas = document.getElementById('particles-bg');
-            const ctx = canvas.getContext('2d');
-            let w = canvas.width = window.innerWidth;
-            let h = canvas.height = window.innerHeight;
-            let particles = [];
-            let particleCount = w > 768 ? 130 : 70;
+            btn.innerText = "正在注入防封协议...";
+            btn.style.pointerEvents = "none";
+            btn.style.opacity = "0.7";
 
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * w;
-                    this.y = Math.random() * h;
-                    this.r = 2 + Math.random() * 2.5;
-                    this.speedX = (Math.random() - 0.5) * 0.55;
-                    this.speedY = (Math.random() - 0.5) * 0.55;
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.x < 0 || this.x > w) this.speedX *= -1;
-                    if (this.y < 0 || this.y > h) this.speedY *= -1;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(96, 165, 250, 0.85)';
-                    ctx.fill();
-                }
-            }
+            setTimeout(() => {
+                loginForm.style.display = 'none';
+                securityPanel.style.display = 'flex';
+                enterBtn.style.display = 'block';
+            }, 1500);
+        }
 
-            function initParticles() {
-                particles = [];
-                for (let i = 0; i < particleCount; i++) {
-                    particles.push(new Particle());
-                }
-            }
-            initParticles();
+        function enterSystem() {
+            const btn = document.getElementById('enterBtn');
+            btn.innerText = "正在连接服务器...";
+            setTimeout(() => {
+                alert("✅ 环境安全，正在进入游戏...");
+                btn.innerText = "已进入系统";
+            }, 1000);
+        }
 
-            function drawLines() {
-                for (let a = 0; a < particles.length; a++) {
-                    for (let b = a + 1; b < particles.length; b++) {
-                        const dx = particles[a].x - particles[b].x;
-                        const dy = particles[a].y - particles[b].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 130) {
-                            ctx.beginPath();
-                            ctx.moveTo(particles[a].x, particles[a].y);
-                            ctx.lineTo(particles[b].x, particles[b].y);
-                            ctx.strokeStyle = `rgba(96,165,250,${(1 - dist / 130) * 0.55})`;
-                            ctx.lineWidth = 1;
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            function render() {
-                ctx.clearRect(0, 0, w, h);
-                particles.forEach(p => { p.update(); p.draw(); });
-                drawLines();
-                requestAnimationFrame(render);
-            }
-            render();
-
-            window.addEventListener('resize', function() {
-                w = canvas.width = window.innerWidth;
-                h = canvas.height = window.innerHeight;
-                particleCount = w > 768 ? 130 : 70;
-                initParticles();
-            });
-        })();
+        function updateServerStats() {
+            const cpu = Math.floor(Math.random() * 10) + 30;
+            document.getElementById('cpu-val').innerText = cpu + '%';
+            const ram = Math.floor(Math.random() * 5) + 50;
+            document.getElementById('ram-val').innerText = ram + '%';
+            const ping = Math.floor(Math.random() * 5) + 18;
+            document.getElementById('ping-val').innerText = ping + 'ms';
+        }
+        setInterval(updateServerStats, 2000);
+        updateServerStats();
     </script>
-
 </body>
 </html>
